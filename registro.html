@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta | Vitalis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="auth-body">
+    <div class="background-overlay"></div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>VITALIS</span>
+            </div>
+            <p class="auth-subtitle">Crear cuenta de personal</p>
+
+            <div id="alerta-registro" class="alerta hidden"></div>
+
+            <form id="form-registro" class="auth-form">
+                <div class="form-group">
+                    <label>Nombre completo</label>
+                    <input type="text" id="reg-nombre" required minlength="2" placeholder="Ej. María Fernández">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="reg-correo" required placeholder="correo@vitalis.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Rol</label>
+                    <select id="reg-rol" required>
+                        <option value="">Seleccione un rol...</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Recepcion">Recepción</option>
+                        <option value="Medico">Médico</option>
+                        <option value="Enfermeria">Enfermería</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="reg-password" required minlength="6" placeholder="Mínimo 6 caracteres">
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmar contraseña</label>
+                    <input type="password" id="reg-password2" required minlength="6" placeholder="Repite tu contraseña">
+                </div>
+
+                <button type="submit" class="btn-primary btn-full" id="btn-registro-submit">
+                    <i class="fas fa-user-plus"></i> Crear cuenta
+                </button>
+            </form>
+
+            <p class="auth-footer">
+                ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+</html>

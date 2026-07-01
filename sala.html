@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de Espera | Vitalis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sala.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-heartbeat"></i> <span>VITALIS</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="citas.html">Citas</a></li>
+            <li><a href="#" class="active">Sala de Espera</a></li>
+            <li><div id="user-badge" class="user-chip">Cargando...</div></li>
+            <li><button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <header class="panel-header">
+            <h1><i class="fas fa-clock"></i> Sala de Espera Virtual</h1>
+            <div class="status-summary">
+                <span id="contador-espera" class="chip">En espera: 0</span>
+            </div>
+        </header>
+
+        <section class="glass-panel">
+            <div class="table-container">
+                <table id="tabla-espera">
+                    <thead>
+                        <tr>
+                            <th>Prioridad</th>
+                            <th>Paciente</th>
+                            <th>Médico / Especialidad</th>
+                            <th>Llegada</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-espera-body">
+                        <tr><td colspan="6" class="estado-vacio">Cargando sala de espera...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/sala.js"></script>
+</body>
+</html>

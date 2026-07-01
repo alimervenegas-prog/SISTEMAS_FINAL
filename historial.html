@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Médico | Vitalis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/historial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-heartbeat"></i> <span>VITALIS</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="sala.html">Sala de Espera</a></li>
+            <li><a href="#" class="active">Historial</a></li>
+            <li><div id="user-badge" class="user-chip">Cargando...</div></li>
+            <li><button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Buscador de Citas Atendidas -->
+        <section class="glass-panel">
+            <h2><i class="fas fa-notes-medical"></i> Registrar resultados </h2>
+            <p class="instruccion">Seleccione una cita finalizada para registrar el diagnóstico.</p>
+            <div class="form-group" style="margin-top: 1rem;">
+                <select id="select-cita-atendida" required>
+                    <option value="">Cargando citas atendidas...</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Formulario de Historial (Oculto hasta elegir cita) -->
+        <section id="seccion-registro" class="glass-panel hidden" style="margin-top: 2rem;">
+            <form id="form-historial" class="grid-form">
+                <div class="form-group full-width">
+                    <div id="info-paciente-atencion" class="alert-info"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Síntomas Reportados</label>
+                    <textarea id="sintomas" required minlength="10" maxlength="300"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Diagnóstico Médico</label>
+                    <textarea id="diagnostico" required minlength="10" maxlength="300"></textarea>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Tratamiento e Indicaciones</label>
+                    <textarea id="tratamiento" required minlength="10" maxlength="400"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Medicamento Recetado (Opcional)</label>
+                    <input type="text" id="med-nombre" placeholder="Nombre del medicamento">
+                </div>
+
+                <div class="form-group">
+                    <label>Dosis / Frecuencia</label>
+                    <input type="text" id="med-dosis" placeholder="Ej: Cada 8 horas por 5 días">
+                </div>
+
+                <div class="form-actions full-width">
+                    <button type="submit" class="btn-primary" id="btn-guardar-historial">
+                        <i class="fas fa-save"></i> Finalizar Registro y Guardar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Consulta de Historiales Previos -->
+        <section class="glass-panel" style="margin-top: 2rem;">
+            <div class="panel-header">
+                <h2><i class="fas fa-folder-open"></i> Historiales Guardados</h2>
+                <input type="text" id="buscar-historial" placeholder="Buscar por DNI del paciente...">
+            </div>
+            <div id="contenedor-historiales">
+                <p class="estado-vacio">Cargando historiales...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/historial.js"></script>
+</body>
+</html>

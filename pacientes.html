@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pacientes | Vitalis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pacientes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-heartbeat"></i> <span>VITALIS</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#" class="active">Pacientes</a></li>
+            <li><div id="user-badge" class="user-chip">Cargando...</div></li>
+            <li><button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="glass-panel">
+            <h2><i class="fas fa-user-plus"></i> Registro de Nuevo Paciente</h2>
+            <form id="form-paciente" class="grid-form">
+                <div class="form-group">
+                    <label>Nombres</label>
+                    <input type="text" id="nombres" required minlength="2" maxlength="60">
+                </div>
+
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input type="text" id="apellidos" required minlength="2" maxlength="80">
+                </div>
+
+                <div class="form-group">
+                    <label>DNI (8 dígitos)</label>
+                    <input type="text" id="dni" required pattern="\d{8}" title="Debe tener 8 números">
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha de Nacimiento</label>
+                    <input type="date" id="fechaNac" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono (9 dígitos)</label>
+                    <input type="tel" id="telefono" required pattern="\d{9}">
+                </div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="correo">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Alergias</label>
+                    <select id="alergias" multiple class="multi-select">
+                        <option value="Ninguna">Ninguna</option>
+                        <option value="Penicilina">Penicilina</option>
+                        <option value="Ibuprofeno">Ibuprofeno</option>
+                        <option value="Mariscos">Mariscos</option>
+                        <option value="Otro">Otro (especificar)</option>
+                    </select>
+                    <input type="text" id="otroAlergia" placeholder="¿Cuál?" class="hidden">
+                </div>
+
+                <div class="form-group">
+                    <label>Contacto Emergencia (Nombre)</label>
+                    <input type="text" id="contactoNombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Parentesco con el Paciente</label>
+                    <select id="contactoParentesco" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Padre">Padre</option>
+                        <option value="Madre">Madre</option>
+                        <option value="Esposo/a">Esposo/a</option>
+                        <option value="Hijo/a">Hijo/a</option>
+                        <option value="Hermano/a">Hermano/a</option>
+                        <option value="Abuelo/a">Abuelo/a</option>
+                        <option value="Tutor legal">Tutor legal</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono Emergencia</label>
+                    <input type="tel" id="contactoTel" required pattern="\d{9}">
+                </div>
+
+                <div class="form-actions full-width">
+                    <button type="submit" class="btn-primary" id="btn-guardar-paciente">
+                        <i class="fas fa-save"></i> Guardar Paciente
+                    </button>
+                    <button type="reset" class="btn-secondary">Limpiar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="glass-panel" style="margin-top: 2rem;">
+            <div class="panel-header">
+                <h2><i class="fas fa-users"></i> Pacientes Registrados</h2>
+                <input type="text" id="busqueda" placeholder="Buscar por DNI o Apellido...">
+            </div>
+            <div class="table-container">
+                <table id="tabla-pacientes">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Paciente</th>
+                            <th>DNI</th>
+                            <th>Edad</th>
+                            <th>Alergias</th>
+                            <th>Contacto Emergencia</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-pacientes-body">
+                        <tr><td colspan="7" class="estado-vacio">Cargando pacientes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/pacientes.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+/* =====================================================================
+   historial.css — Estilos del módulo de Historial Médico
+   ===================================================================== */
+
+.alert-info {
+    background: rgba(42, 82, 190, 0.1);
+    border-left: 4px solid var(--primary);
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.instruccion {
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.historial-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: 0.3s;
+}
+
+.historial-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.historial-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
+    font-size: 0.88rem;
+    color: var(--primary);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.historial-body p {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.receta-box {
+    margin-top: 1rem;
+    background: #f0f7ff;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px dashed var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+#contenedor-historiales {
+    margin-top: 1.5rem;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 10px;
+}

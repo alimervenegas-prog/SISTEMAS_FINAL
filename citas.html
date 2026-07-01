@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas Médicas | Vitalis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/citas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-heartbeat"></i> <span>VITALIS</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pacientes.html">Pacientes</a></li>
+            <li><a href="#" class="active">Citas</a></li>
+            <li><div id="user-badge" class="user-chip">Cargando...</div></li>
+            <li><button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="glass-panel">
+            <h2><i class="fas fa-calendar-plus"></i> Programar Nueva Cita</h2>
+            <form id="form-citas" class="grid-form">
+                <div class="form-group">
+                    <label>Seleccionar Paciente</label>
+                    <select id="select-paciente" required>
+                        <option value="">Cargando pacientes...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Especialidad</label>
+                    <select id="especialidad" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Medicina General">Medicina General</option>
+                        <option value="Pediatría">Pediatría</option>
+                        <option value="Cardiología">Cardiología</option>
+                        <option value="Dermatología">Dermatología</option>
+                        <option value="Odontología">Odontología</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Médico Asignado</label>
+                    <input type="text" id="medico" required placeholder="Ej. Dr. Ramírez">
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <input type="date" id="fecha-cita" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Hora (08:00 - 18:00)</label>
+                    <input type="time" id="hora-cita" min="08:00" max="18:00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Prioridad</label>
+                    <select id="prioridad" required>
+                        <option value="Normal">Normal</option>
+                        <option value="Preferencial">Preferencial</option>
+                        <option value="Urgente">Urgente</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Motivo de Consulta</label>
+                    <textarea id="motivo" rows="2" required minlength="3" maxlength="200"></textarea>
+                </div>
+
+                <div id="campo-urgencia" class="form-group full-width hidden">
+                    <label>Justificación de Urgencia</label>
+                    <input type="text" id="justificacion" minlength="3">
+                </div>
+
+                <div class="form-actions full-width">
+                    <button type="submit" class="btn-primary" id="btn-guardar-cita">
+                        <i class="fas fa-calendar-check"></i> Agendar Cita
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="glass-panel" style="margin-top: 2rem;">
+            <div class="panel-header">
+                <h2><i class="fas fa-list-ul"></i> Agenda de Citas</h2>
+                <div class="filters">
+                    <input type="date" id="filtro-fecha">
+                    <select id="filtro-estado">
+                        <option value="">Todos los estados</option>
+                        <option value="Programada">Programada</option>
+                        <option value="Cancelada">Cancelada</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="tabla-citas">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Paciente</th>
+                            <th>Médico</th>
+                            <th>Fecha/Hora</th>
+                            <th>Prioridad</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-citas-body">
+                        <tr><td colspan="7" class="estado-vacio">Cargando citas...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/citas.js"></script>
+</body>
+</html>

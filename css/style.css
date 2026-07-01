@@ -1,0 +1,444 @@
+/* =====================================================================
+   style.css — Estilos globales del sistema Vitalis
+   ===================================================================== */
+
+:root {
+    --primary: #2a52be;
+    --primary-dark: #1e3c8c;
+    --secondary: #48cae4;
+    --text-dark: #2d3436;
+    --glass: rgba(255, 255, 255, 0.85);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --shadow-soft: 0 4px 16px rgba(31, 38, 135, 0.08);
+    --radius-lg: 20px;
+    --radius-md: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background: linear-gradient(160deg, #eef3fb 0%, #dceefc 50%, #eaf6fb 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, rgba(72, 202, 228, 0.12), transparent 60%),
+                radial-gradient(circle at 80% 0%, rgba(42, 82, 190, 0.10), transparent 55%);
+    z-index: -1;
+}
+
+/* ---------------------------------------------------------------------
+   Navbar
+   --------------------------------------------------------------------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 5%;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: 0.25s;
+    padding: 6px 4px;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-links a.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.user-chip {
+    background: var(--primary);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: default;
+}
+
+.btn-logout {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-logout:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+/* ---------------------------------------------------------------------
+   Layout general
+   --------------------------------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    color: var(--text-dark);
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #636e72;
+}
+
+/* ---------------------------------------------------------------------
+   Tarjetas de módulos (index)
+   --------------------------------------------------------------------- */
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.8rem;
+}
+
+.module-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: var(--text-dark);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.module-card:hover {
+    transform: translateY(-8px);
+    background: white;
+    border-color: var(--secondary);
+    box-shadow: var(--shadow);
+}
+
+.module-card.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    filter: grayscale(0.4);
+}
+
+.icon-box {
+    width: 64px;
+    height: 64px;
+    background: rgba(42, 82, 190, 0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 1.4rem;
+}
+
+.module-card h3 {
+    margin-bottom: 0.6rem;
+    font-size: 1.3rem;
+}
+
+.module-card p {
+    font-size: 0.92rem;
+    color: #636e72;
+    margin-bottom: 1.4rem;
+    line-height: 1.5;
+}
+
+.btn-access {
+    margin-top: auto;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+/* ---------------------------------------------------------------------
+   Paneles tipo "glass"
+   --------------------------------------------------------------------- */
+.glass-panel {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    padding: 2.2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: var(--shadow-soft);
+}
+
+.glass-panel h2 {
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+}
+
+.glass-panel h2 i {
+    color: var(--primary);
+}
+
+/* ---------------------------------------------------------------------
+   Formularios
+   --------------------------------------------------------------------- */
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    margin-top: 1.6rem;
+}
+
+.full-width { grid-column: span 2; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.25s;
+    font-size: 0.92rem;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(42, 82, 190, 0.12);
+    background: white;
+}
+
+.multi-select { min-height: 90px; }
+
+.hidden { display: none !important; }
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* ---------------------------------------------------------------------
+   Botones
+   --------------------------------------------------------------------- */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0.85rem 1.8rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: 0.25s;
+}
+
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+    background: rgba(0,0,0,0.05);
+    color: var(--text-dark);
+    padding: 0.85rem 1.8rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: 0.25s;
+}
+
+.btn-secondary:hover { background: rgba(0,0,0,0.1); }
+
+.btn-icon.delete {
+    color: #eb4d4b;
+    background: none;
+    border: none;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-icon.delete:hover { transform: scale(1.15); }
+
+/* ---------------------------------------------------------------------
+   Tablas
+   --------------------------------------------------------------------- */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#busqueda,
+.filters input,
+.filters select {
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    font-size: 0.88rem;
+    background: white;
+}
+
+#busqueda { width: 280px; }
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 0.5rem;
+    border-radius: var(--radius-md);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.9rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+th {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+tbody tr {
+    transition: background 0.2s;
+}
+
+tbody tr:hover {
+    background: rgba(42, 82, 190, 0.04);
+}
+
+.tag {
+    background: #e3f2fd;
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.text-muted {
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+.estado-vacio {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: #95a5a6;
+    font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------------------
+   Loading / Spinners
+   --------------------------------------------------------------------- */
+.spinner-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+/* ---------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .grid-form { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+    .nav-links { gap: 1rem; flex-wrap: wrap; }
+    #busqueda { width: 100%; }
+    .hero h1 { font-size: 2rem; }
+}
