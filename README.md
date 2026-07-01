@@ -159,4 +159,4 @@ _Completar según cómo se repartió el trabajo en tu equipo, por ejemplo:_
 
 ## Capturas del sistema
 
-_Agregar aquí capturas de pantalla del login, dashboard, y cada módulo antes de la entrega final._
+_Agregar aquí capturas de pantalla del login, dashboard, y cada módulo antes de la entrega final.._
